@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Julian Lore</title>
+    <link>https://julianlore.com/</link>
+    <description>Recent content on Julian Lore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Julian Lore 2018</copyright>
+    <lastBuildDate>Sun, 07 Oct 2018 20:55:26 -0400</lastBuildDate>
+    
+	<atom:link href="https://julianlore.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Welcome to my website!</title>
+      <link>https://julianlore.com/blog/welcome/</link>
+      <pubDate>Sun, 07 Oct 2018 20:55:26 -0400</pubDate>
+      
+      <guid>https://julianlore.com/blog/welcome/</guid>
+      <description>Welcome to my website! Welcome to my personal website. After having my old website up for a bit over two years and not updating it for a long time, I have decided to switch from a static website with raw HTML to a generated static website using Hugo. Haven&amp;rsquo;t decided completely as to what to put on here yet, aside from my personal portfolio, showcasing some projects and perhaps some resources.</description>
+    </item>
+    
+  </channel>
+</rss>
