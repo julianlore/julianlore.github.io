@@ -6,10 +6,19 @@
     <description>Recent content on Julian Lore</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Julian Lore 2018</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 20:55:26 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 22:24:25 -0400</lastBuildDate>
     
 	<atom:link href="https://julianlore.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Installing an Arch Linux VM</title>
+      <link>https://julianlore.com/blog/installing_arch_linux_vm/</link>
+      <pubDate>Sun, 07 Oct 2018 22:24:25 -0400</pubDate>
+      
+      <guid>https://julianlore.com/blog/installing_arch_linux_vm/</guid>
+      <description>Installing an Arch Linux VM I use Arch Linux as my main working operating system on my laptop, as I love how it is very bare-bones and can be configured exactly how you like it, making it your very own experience, but at the same time not requiring as much maintenance such as Gentoo or Linux From Scratch, although I have yet to try others. I do respect the many other Linux distributions, as I have tried many and like them (and see their usability), just not as much as something that I can make my own.</description>
+    </item>
     
     <item>
       <title>Welcome to my website!</title>
