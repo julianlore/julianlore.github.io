@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Julian Lore">
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,700%7cOpen&#43;Sans:400,400italic,700%7cRoboto&#43;Mono%25!%28EXTRA%20*hugolib.PageOutput=Page%28/blog/Automating-Github-Releases.md%29%29">
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-127408997-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    <script async src="//cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+  
+
+  
+  <link rel="alternate" href="https://julianlore.com/index.xml" type="application/rss+xml" title="Julian Lore">
+  <link rel="feed" href="https://julianlore.com/index.xml" type="application/rss+xml" title="Julian Lore">
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://julianlore.com/blog/automating-github-releases/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Julian Lore">
+  <meta property="og:url" content="https://julianlore.com/blog/automating-github-releases/">
+  <meta property="og:title" content="Automating Github Releases | Julian Lore">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-01-12T14:27:39-05:00">
+  
+  <meta property="article:modified_time" content="2019-01-12T14:27:39-05:00">
+  
+
+  <title>Automating Github Releases | Julian Lore</title>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-127408997-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</head>
+<body>
+
+<style type="text/css">
+
+.masthead-hero {
+  background-image: url("https://julianlore.com/img/hero.jpg");
+}
+</style>
+
+<div class="masthead-hero"></div>
+
+
+<div id="main" role="main">
+  <div class="sidebar sticky" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <div class="author-avatar">
+    <a href="/">
+      <img src="/img/heckert.png" alt="Julian Lore" itemprop="image">
+    </a>
+  </div>
+  <div class="author-content">
+    <h3 class="author-name" itemprop="name">Julian Lore</h3>
+    <p class="author-bio" itemprop="description">Undergraduate student at McGill University.</p>
+  </div>
+  <div class="author-urls-wrapper">
+    <ul class="author-urls social-icons" aria-hidden="true">
+      <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+        <span itemprop="name">Montreal, Canada</span>
+      </li>
+      
+      <li>
+        <a itemprop="sameAs" href="//github.com/julianlore" target="_blank" rel="noopener">
+          <i class="fa fa-github"></i>
+          Github
+        </a>
+      </li>
+      
+    </ul>  
+  </div>
+</div>
+
+  <article class="page">
+		<div class="page_container">
+			<section class="page_content">
+				<div class="navbar-hero">
+	<nav>
+		<a href="/">Home</a>&nbsp&nbsp•&nbsp&nbsp
+		<a href="/projects">Projects</a>&nbsp&nbsp•&nbsp&nbsp
+		<a href="/blog">Blog</a>&nbsp&nbsp•&nbsp&nbsp
+		<a href="/about">About</a>
+	</nav>
+</div>
+				<article class="post" itemscope itemtype="http://schema.org/Article">
+  <div class="post-container">
+    <h1 itemprop="name"><a href="https://julianlore.com/blog/automating-github-releases/">Automating Github Releases</a></h1>
+
+    
+      
+
+<div class="post-metadata">
+
+  <span class="post-date">
+    
+    <time datetime="2019-01-12 14:27:39 -0500 EST" itemprop="datePublished dateModified">
+      Jan 12, 2019
+    </time>
+  </span>
+
+  
+
+</div>
+
+    
+
+    <div class="post-style" itemprop="articleBody">
+      Automating Github Releases with scripts
+      
+
+<p>Github releases are a good way to distribute milestone releases of
+your repository and in particular, releasing binary files such that
+others do not necessarily need to recompile from source.</p>
+
+<p>Note: If you want to simply just mark milestones of your repository,
+you can use the <code>git tag</code> feature. Tags pushed to Github will be
+in the releases area of your repository and offer users the option to
+download a <code>zip</code> or <code>tar.gz</code> of the repository at the commit specified
+by the tag.</p>
+
+<p>I decided to start looking into Github releases to share the compiled
+pdfs of my .tex notes/reviews. Previously, I have been adding the pdf
+files to my public repository, which of course is a bad idea as it
+increases the size of the repository linearly with each commit, which
+is very bad when one commits often. So in this post I will describe
+the steps I have gone through to automate my Github releases.</p>
+
+<h2 id="oauth">OAuth</h2>
+
+<p>To commence, you need to generate a OAuth token to use for sending web
+requests to the Github API. Full details on doing so are
+<a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/" target="_blank">here</a>,
+but essentially all you must do is go to the developer settings and
+<a href="https://github.com/settings/tokens/new" target="_blank">generate a personal access
+token</a>. You will need
+<code>public_repo</code> in order to create releases for a public repository, or
+the entire <code>repo</code> scope to be able to create releases for a private
+repository.</p>
+
+<h2 id="using-curl-to-manage-releases">Using curl to manage releases</h2>
+
+<p>(Full documentation on using the REST API to manage releases
+<a href="https://developer.github.com/v3/repos/releases/" target="_blank">here</a>, I will touch
+on the basic versions of what I have used)</p>
+
+<p><em>Note</em>: Variables to replace with your values in curl URLs here are
+denoted by $(var_name)</p>
+
+<p>To create a release, you&rsquo;ll want to send a POST request to the
+releases URL through the Github API, with the pertinent information,
+like so:</p>
+
+<pre><code>curl --data '{&quot;tag_name&quot;: &quot;tag name (equivalent to git
+tag names)&quot;, &quot;name&quot;: &quot;name of the release, often a version number&quot;,
+&quot;body&quot;: &quot;Description&quot;}'
+https://api.github.com/repos/$(github_username)/$(github_repository)/releases\?access_token\=$(your_oauth_token)
+</code></pre>
+
+<p>There are other parameters (<code>target_commitish</code>, <code>draft</code>,
+<code>prerelease</code>) as well (more details <a href="https://developer.github.com/v3/repos/releases/" target="_blank">here</a>). The only
+required one is <code>tag_name</code>.</p>
+
+<p>Now to edit the release, you will need the URL returned by the
+POST request that created the release, or you can GET that information
+again with the following:</p>
+
+<pre><code>curl https://api.github.com/repos/$(github_username)/$(github_repository)/releases/tags/$(tag_name)\?access_token\=$(your_oauth_token)
+</code></pre>
+
+<p>In particular, we are interested in uploading assets, the required URL
+is given by the &ldquo;upload_url&rdquo; returned by either the POST or GET
+request as above.</p>
+
+<h3 id="uploading-a-release-asset">Uploading a release asset</h3>
+
+<p>Here&rsquo;s how you upload a pdf using curl:</p>
+
+<pre><code>curl -H &quot;Content-Type: application/pdf&quot; -T file.pdf https://uploads.github.com/repos/$(github_username)/$(github_repository)/releases/$(release_id)/assets\?name\=$(asset_name)\&amp;access_token\=$(your_oauth_token)
+</code></pre>
+
+<p>To upload different types of assets, you may consult the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" target="_blank">IANA&rsquo;s media
+types</a>
+or you can query a file&rsquo;s type with <code>file -b --mime-type $(FILENAME)</code>.</p>
+
+<h3 id="deleting-releases">Deleting releases</h3>
+
+<pre><code>curl -X DELETE https://api.github.com/repos/$(github_username)/$(github_repository)/releases/$(release_id)\?access_token\=$(your_oauth_token)
+</code></pre>
+
+<p>More information on the Github REST API <a href="https://developer.github.com/v3/" target="_blank">here</a>.</p>
+
+    </div>
+
+    
+      
+
+    
+
+    
+      
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Automating%20Github%20Releases&amp;url=https%3a%2f%2fjulianlore.com%2fblog%2fautomating-github-releases%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fjulianlore.com%2fblog%2fautomating-github-releases%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjulianlore.com%2fblog%2fautomating-github-releases%2f&amp;title=Automating%20Github%20Releases"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Automating%20Github%20Releases&amp;body=https%3a%2f%2fjulianlore.com%2fblog%2fautomating-github-releases%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+    
+
+    
+      
+<div class="disqus">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "julianlore" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+    
+
+  </div>
+</article>
+			</section>
+		</div>
+	</article>
+</div> 
+
+<div class="page_footer">
+	<p>Julian Lore 2018. Powered by <a href="http://gohugo.io/">Hugo</a> and <a href="https://github.com/jhu247/minimal-academic">Minimal Academic</a>.</p>
+</div>
+    
+    
+    <script id="dsq-count-scr" src="//julianlore.disqus.com/count.js" async></script>
+    
+
+
+  </body>
+</html>

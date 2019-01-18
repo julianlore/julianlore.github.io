@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://julianlore.com/blog/automating-github-releases/</loc>
+    <lastmod>2019-01-12T14:27:39-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://julianlore.com/blog/installing_arch_linux_vm/</loc>
     <lastmod>2018-10-07T22:24:25-04:00</lastmod>
   </url>
@@ -14,12 +19,12 @@
   
   <url>
     <loc>https://julianlore.com/</loc>
-    <lastmod>2018-10-07T22:24:25-04:00</lastmod>
+    <lastmod>2019-01-12T14:27:39-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://julianlore.com/blog/</loc>
-    <lastmod>2018-10-07T22:24:25-04:00</lastmod>
+    <lastmod>2019-01-12T14:27:39-05:00</lastmod>
   </url>
   
   <url>

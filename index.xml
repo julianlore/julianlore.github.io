@@ -6,10 +6,20 @@
     <description>Recent content on Julian Lore</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Julian Lore 2018</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 22:24:25 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jan 2019 14:27:39 -0500</lastBuildDate>
     
 	<atom:link href="https://julianlore.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automating Github Releases</title>
+      <link>https://julianlore.com/blog/automating-github-releases/</link>
+      <pubDate>Sat, 12 Jan 2019 14:27:39 -0500</pubDate>
+      
+      <guid>https://julianlore.com/blog/automating-github-releases/</guid>
+      <description>Github releases are a good way to distribute milestone releases of your repository and in particular, releasing binary files such that others do not necessarily need to recompile from source.
+Note: If you want to simply just mark milestones of your repository, you can use the git tag feature. Tags pushed to Github will be in the releases area of your repository and offer users the option to download a zip or tar.</description>
+    </item>
     
     <item>
       <title>Installing an Arch Linux VM</title>
